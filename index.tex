@@ -1,0 +1,757 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrreport}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{D2Coding ligature:style=Regular}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Extending Communities of Practice Through Digital Networks: A Relational Event Model Analysis of Knowledge Sharing Dynamics in an Online Professional Community},
+  pdfauthor={Chungil Chae},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Extending Communities of Practice Through Digital Networks: A
+Relational Event Model Analysis of Knowledge Sharing Dynamics in an
+Online Professional Community}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{working}
+\author{Chungil Chae}
+\date{Mon, 24 November 2025}
+\begin{document}
+\maketitle
+
+\renewcommand*\contentsname{Table of contents}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+\listoffigures
+\listoftables
+
+\bookmarksetup{startatroot}
+
+\chapter*{Project Details}\label{project-details}
+\addcontentsline{toc}{chapter}{Project Details}
+
+\markboth{Project Details}{Project Details}
+
+Updated in 2021-09-01
+
+\section*{Citation}\label{citation}
+\addcontentsline{toc}{section}{Citation}
+
+\markright{Citation}
+
+\section*{Abstract}\label{abstract}
+\addcontentsline{toc}{section}{Abstract}
+
+\markright{Abstract}
+
+\begin{quote}
+In today's hyper-connected environment, organizations increasingly rely
+on distributed expertise and cross-boundary knowledge exchange to remain
+competitive. While Communities of Practice (CoPs) have been widely
+recognized as essential structures for collective learning, the rise of
+digital technologies has enabled a new form of community---extended
+Communities of Practice (eCoPs)---that transcend geographical,
+organizational, and temporal boundaries. These digitally mediated, fluid
+networks connect diverse practitioners and support continuous,
+practice-oriented knowledge sharing. Despite their growing importance,
+theoretical and methodological tools for understanding the temporal
+dynamics of knowledge exchange in eCoPs remain limited. Existing
+research often relies on static or aggregated network representations
+that obscure the sequential, event-based structure of knowledge
+interactions. To address this gap, we apply Relational Event Models
+(REM), a statistical framework designed to analyze time-stamped
+interaction sequences and capture how prior events shape subsequent
+behavior. Using four months of interaction data from CloudBro, an online
+professional community of IT practitioners, we examine 216 relational
+events generated by 59 participants across 309 posts in 89 discussion
+threads. By leveraging REM's temporal granularity, this study elucidates
+how conversational sequences, reciprocity, and emergent attention
+patterns structure knowledge flows in an extended CoP. The findings
+contribute to theory development on digital knowledge communities and
+offer practical insights for designing and managing effective eCoPs.
+\end{quote}
+
+\section*{Planning}\label{planning}
+\addcontentsline{toc}{section}{Planning}
+
+\markright{Planning}
+
+\subsection*{Schedule}\label{schedule}
+\addcontentsline{toc}{subsection}{Schedule}
+
+\begin{itemize}
+\tightlist
+\item
+  Nov, 2025
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Draft
+  \end{itemize}
+\item
+  Dec, 2025
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Submit
+  \end{itemize}
+\end{itemize}
+
+\subsection*{Progress}\label{progress}
+\addcontentsline{toc}{subsection}{Progress}
+
+\begin{itemize}
+\tightlist
+\item
+  Pilot analysis done
+\item
+  writing
+\end{itemize}
+
+\section*{Authorship and Authors}\label{authorship-and-authors}
+\addcontentsline{toc}{section}{Authorship and Authors}
+
+\markright{Authorship and Authors}
+
+\subsection*{Author Contribution}\label{author-contribution}
+\addcontentsline{toc}{subsection}{Author Contribution}
+
+\begin{itemize}
+\tightlist
+\item
+  Supervision: Chungil (Chad) Chae
+\item
+  Project administration:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Chungil (Chad) Chae
+  \end{itemize}
+\item
+  Conceptualization:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Chungil (Chad) Chae
+  \end{itemize}
+\item
+  Data accusation:
+\item
+  Cloud Bro
+\item
+  Data curation:
+\item
+  Jiongcheng Lu (Tony)
+\item
+  Formal analysis:
+\item
+  Chungil (Chad) Chae
+\item
+  Jiongcheng Lu (Tony)
+\item
+  Investigation:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Jiongcheng Lu (Tony)
+  \end{itemize}
+\item
+  Methodology:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Chungil (Chad) Chae
+  \item
+    Jiongcheng Lu (Tony)
+  \end{itemize}
+\item
+  Resources:
+\item
+  Validation:
+\item
+  Visualization:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Jiongcheng Lu (Tony)
+  \end{itemize}
+\item
+  Writing -- original draft:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Chungil (Chad) Chae
+  \item
+    Jiongcheng Lu (Tony)
+  \end{itemize}
+\item
+  Writing -- review \& editing:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Chungil (Chad) Chae
+  \end{itemize}
+\end{itemize}
+
+\subsection*{Authors}\label{authors}
+\addcontentsline{toc}{subsection}{Authors}
+
+\subsubsection*{Chungil Chae, Ph.D.,
+M.S.}\label{chungil-chae-ph.d.-m.s.}
+\addcontentsline{toc}{subsubsection}{Chungil Chae, Ph.D., M.S.}
+
+\begin{itemize}
+\tightlist
+\item
+  chadchae@gmail.com
+\item
+  orcid:
+  \href{https://orcid.org/0000-0002-7364-1525}{000-0002-7364-1525}
+\item
+  \href{https://scholar.google.com/citations?user=c4lRBrkAAAAJ&hl=en}{Google
+  Scholar}
+\item
+  Chae (2024)
+\end{itemize}
+
+\pandocbounded{\includegraphics[keepaspectratio]{img/chadchae.png}}
+
+\begin{quote}
+Chungil Chae (Chad) is an assistant professor in the field of business
+analytics, with a distinguished track record in organizational behavior,
+human resource development (HRD), learning, and development. With a
+prolific publication record that spans various dimensions of HRD and
+organizational studies, Dr.~Chae has made significant contributions to
+understanding the dynamics of organizational support on knowledge
+sharing, virtual team leadership, and the structural determinants of HRD
+research collaboration networks. And his work embodies a deep commitment
+to enhancing understanding and practices in organizational behavior,
+HRD, learning, and development. His interdisciplinary research not only
+contributes to academic discourse but also offers tangible strategies
+for organizational improvement and individual development.
+\end{quote}
+
+\subsubsection*{Jiongcheng Lu (Tony)}\label{jiongcheng-lu-tony}
+\addcontentsline{toc}{subsubsection}{Jiongcheng Lu (Tony)}
+
+\begin{itemize}
+\tightlist
+\item
+  lujiongcheng1@gmail.com
+\item
+  orcid:
+\item
+  google scholar:
+\end{itemize}
+
+\pandocbounded{\includegraphics[keepaspectratio]{img/tony.png}}
+
+\begin{quote}
+JJiongcheng Lu (Tony) is a Ph.D candidate. He hold a solid
+interdisciplinary background that bridges industry experience with
+academic research. He completed undergraduate studies at Wenzhou-Kean
+University, a Sino--American joint institution, majoring in Finance and
+minoring in Economics. During his studies, he served as a Teaching
+Assistant for Python and R data analysis and programming, and worked as
+a Research Assistant on projects involving data mining and healthcare
+accessibility in collaboration with Kean University. He later completed
+master's degree at University College London (UCL), where He focused on
+the intersection of finance and the healthcare sector. After graduation,
+he worked as a Research Assistant in Health Economics at Peking
+University, further strengthening his quantitative and analytical
+expertise. He is currently pursuing PhD at the University of Sydney.
+Beyond academia, He have completed internships at banks, investment
+institutions, and technology research institutes, gaining broad exposure
+to finance, innovation, and applied research. He also founded own
+technology startup, which provided hands-on entrepreneurial experience.
+\end{quote}
+
+\subsection*{Acknowledgement}\label{acknowledgement}
+\addcontentsline{toc}{subsection}{Acknowledgement}
+
+\begin{itemize}
+\tightlist
+\item
+  tba
+\end{itemize}
+
+\section*{Declearation}\label{declearation}
+\addcontentsline{toc}{section}{Declearation}
+
+\markright{Declearation}
+
+\subsection*{IRB}\label{irb}
+\addcontentsline{toc}{subsection}{IRB}
+
+\subsection*{Funding}\label{funding}
+\addcontentsline{toc}{subsection}{Funding}
+
+\subsection*{AI}\label{ai}
+\addcontentsline{toc}{subsection}{AI}
+
+\part{Research Logs}
+
+\chapter*{Research Log}\label{research-log}
+\addcontentsline{toc}{chapter}{Research Log}
+
+\markboth{Research Log}{Research Log}
+
+\section*{xxxx-xx-xx}\label{xxxx-xx-xx}
+\addcontentsline{toc}{section}{xxxx-xx-xx}
+
+\markright{xxxx-xx-xx}
+
+\begin{itemize}
+\tightlist
+\item
+  entry.
+\end{itemize}
+
+\chapter*{Meeting Log}\label{meeting-log}
+\addcontentsline{toc}{chapter}{Meeting Log}
+
+\markboth{Meeting Log}{Meeting Log}
+
+\section*{xxxx-xx-xx}\label{xxxx-xx-xx-1}
+\addcontentsline{toc}{section}{xxxx-xx-xx}
+
+\markright{xxxx-xx-xx}
+
+\begin{itemize}
+\tightlist
+\item[$\boxtimes$]
+  10:00-10:30: Kick-off meeting
+\end{itemize}
+
+\chapter*{Analysis Version}\label{analysis-version}
+\addcontentsline{toc}{chapter}{Analysis Version}
+
+\markboth{Analysis Version}{Analysis Version}
+
+\section*{Version 0.0.1}\label{version-0.0.1}
+\addcontentsline{toc}{section}{Version 0.0.1}
+
+\markright{Version 0.0.1}
+
+\begin{itemize}
+\tightlist
+\item
+  Starting draft
+\end{itemize}
+
+\chapter*{Draft Version}\label{draft-version}
+\addcontentsline{toc}{chapter}{Draft Version}
+
+\markboth{Draft Version}{Draft Version}
+
+\section*{Ver 0.0.1}\label{ver-0.0.1}
+\addcontentsline{toc}{section}{Ver 0.0.1}
+
+\markright{Ver 0.0.1}
+
+\begin{itemize}
+\tightlist
+\item
+  Starting draft
+\end{itemize}
+
+\part{Research Note}
+
+\chapter*{Ideas and Thoughts}\label{ideas-and-thoughts}
+\addcontentsline{toc}{chapter}{Ideas and Thoughts}
+
+\markboth{Ideas and Thoughts}{Ideas and Thoughts}
+
+\chapter*{Research Q \& A}\label{research-q-a}
+\addcontentsline{toc}{chapter}{Research Q \& A}
+
+\markboth{Research Q \& A}{Research Q \& A}
+
+\chapter*{Procedures}\label{procedures}
+\addcontentsline{toc}{chapter}{Procedures}
+
+\markboth{Procedures}{Procedures}
+
+\part{Theoritical Framework}
+
+\chapter*{Related Theories}\label{related-theories}
+\addcontentsline{toc}{chapter}{Related Theories}
+
+\markboth{Related Theories}{Related Theories}
+
+\chapter*{Theortical Relationship}\label{theortical-relationship}
+\addcontentsline{toc}{chapter}{Theortical Relationship}
+
+\markboth{Theortical Relationship}{Theortical Relationship}
+
+\chapter*{Theoritical Framework}\label{theoritical-framework-1}
+\addcontentsline{toc}{chapter}{Theoritical Framework}
+
+\markboth{Theoritical Framework}{Theoritical Framework}
+
+\section*{Hypothesis}\label{hypothesis}
+\addcontentsline{toc}{section}{Hypothesis}
+
+\markright{Hypothesis}
+
+\part{Methodology and Method}
+
+\chapter*{Methdology}\label{methdology}
+\addcontentsline{toc}{chapter}{Methdology}
+
+\markboth{Methdology}{Methdology}
+
+\chapter*{Method}\label{method}
+\addcontentsline{toc}{chapter}{Method}
+
+\markboth{Method}{Method}
+
+\chapter*{Data Collection}\label{data-collection}
+\addcontentsline{toc}{chapter}{Data Collection}
+
+\markboth{Data Collection}{Data Collection}
+
+\chapter*{Data}\label{data}
+\addcontentsline{toc}{chapter}{Data}
+
+\markboth{Data}{Data}
+
+\part{Literature Review}
+
+\chapter*{Searching and Inclusion \&
+Exclusion}\label{searching-and-inclusion-exclusion}
+\addcontentsline{toc}{chapter}{Searching and Inclusion \& Exclusion}
+
+\markboth{Searching and Inclusion \& Exclusion}{Searching and Inclusion
+\& Exclusion}
+
+\chapter*{Round 1}\label{round-1}
+\addcontentsline{toc}{chapter}{Round 1}
+
+\markboth{Round 1}{Round 1}
+
+\section*{Search kewwords and
+category}\label{search-kewwords-and-category}
+\addcontentsline{toc}{section}{Search kewwords and category}
+
+\markright{Search kewwords and category}
+
+\section*{keywords combination}\label{keywords-combination}
+\addcontentsline{toc}{section}{keywords combination}
+
+\markright{keywords combination}
+
+\chapter*{Round 2}\label{round-2}
+\addcontentsline{toc}{chapter}{Round 2}
+
+\markboth{Round 2}{Round 2}
+
+\section*{Search kewwords and
+category}\label{search-kewwords-and-category-1}
+\addcontentsline{toc}{section}{Search kewwords and category}
+
+\markright{Search kewwords and category}
+
+\section*{keywords combination}\label{keywords-combination-1}
+\addcontentsline{toc}{section}{keywords combination}
+
+\markright{keywords combination}
+
+\chapter*{Round 3}\label{round-3}
+\addcontentsline{toc}{chapter}{Round 3}
+
+\markboth{Round 3}{Round 3}
+
+\section*{Search kewwords and
+category}\label{search-kewwords-and-category-2}
+\addcontentsline{toc}{section}{Search kewwords and category}
+
+\markright{Search kewwords and category}
+
+\section*{keywords combination}\label{keywords-combination-2}
+\addcontentsline{toc}{section}{keywords combination}
+
+\markright{keywords combination}
+
+\chapter*{PRISMA}\label{prisma}
+\addcontentsline{toc}{chapter}{PRISMA}
+
+\markboth{PRISMA}{PRISMA}
+
+\chapter*{Reference List}\label{reference-list}
+\addcontentsline{toc}{chapter}{Reference List}
+
+\markboth{Reference List}{Reference List}
+
+Category, Classification and Decision Note for Selected Literature in
+Rounds
+
+\section*{Round 1}\label{round-1-1}
+\addcontentsline{toc}{section}{Round 1}
+
+\markright{Round 1}
+
+\section*{Round 2}\label{round-2-1}
+\addcontentsline{toc}{section}{Round 2}
+
+\markright{Round 2}
+
+\section*{Round 3}\label{round-3-1}
+\addcontentsline{toc}{section}{Round 3}
+
+\markright{Round 3}
+
+\section*{Additional (during and after
+writing)}\label{additional-during-and-after-writing}
+\addcontentsline{toc}{section}{Additional (during and after writing)}
+
+\markright{Additional (during and after writing)}
+
+\chapter*{Reserach Problems}\label{reserach-problems}
+\addcontentsline{toc}{chapter}{Reserach Problems}
+
+\markboth{Reserach Problems}{Reserach Problems}
+
+\chapter*{Key References}\label{key-references}
+\addcontentsline{toc}{chapter}{Key References}
+
+\markboth{Key References}{Key References}
+
+\chapter*{Quotes and Paraphrases}\label{quotes-and-paraphrases}
+\addcontentsline{toc}{chapter}{Quotes and Paraphrases}
+
+\markboth{Quotes and Paraphrases}{Quotes and Paraphrases}
+
+\bookmarksetup{startatroot}
+
+\chapter*{Products}\label{products}
+\addcontentsline{toc}{chapter}{Products}
+
+\markboth{Products}{Products}
+
+\bookmarksetup{startatroot}
+
+\chapter*{References}\label{references}
+\addcontentsline{toc}{chapter}{References}
+
+\markboth{References}{References}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-chadchae}
+Chae, C. (2024). \emph{Introduction to chad (chungil) chae}.
+\url{https://chadchae.github.io}
+
+\end{CSLReferences}
+
+
+
+
+\end{document}
