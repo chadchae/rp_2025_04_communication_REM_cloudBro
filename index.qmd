@@ -1,5 +1,5 @@
 # Project Details {.unnumbered}
-Updated in 2021-09-01
+Updated in 2025-11-24
 
 ## Citation
 
@@ -94,6 +94,47 @@ Updated in 2021-09-01
 ::::
 
 > JJiongcheng Lu (Tony) is a Ph.D candidate. He hold a solid interdisciplinary background that bridges industry experience with academic research. He completed undergraduate studies at Wenzhou-Kean University, a Sino–American joint institution, majoring in Finance and minoring in Economics. During his studies, he served as a Teaching Assistant for Python and R data analysis and programming, and worked as a Research Assistant on projects involving data mining and healthcare accessibility in collaboration with Kean University. He later completed master’s degree at University College London (UCL), where He focused on the intersection of finance and the healthcare sector. After graduation, he worked as a Research Assistant in Health Economics at Peking University, further strengthening his quantitative and analytical expertise. He is currently pursuing PhD at the University of Sydney. Beyond academia, He have completed internships at banks, investment institutions, and technology research institutes, gaining broad exposure to finance, innovation, and applied research. He also founded own technology startup, which provided hands-on entrepreneurial experience.
+
+#### Seungsoo Uh
+
+:::: {.columns}
+
+::: {.column width="70%"}
+
+- email: 
+- orcid:
+- google scholar: 
+
+:::
+
+::: {.column width="30%"}
+![](img/tony.png)
+:::
+
+::::
+
+> David Passmore
+
+#### author
+
+:::: {.columns}
+
+::: {.column width="70%"}
+
+- email: 
+- orcid:
+- google scholar: 
+
+:::
+
+::: {.column width="30%"}
+![](img/tony.png)
+:::
+
+::::
+
+> 
+
 
 ### Acknowledgement
 
