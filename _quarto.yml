@@ -1,0 +1,117 @@
+project:
+  type: book
+  output-dir: docs
+  
+book:
+  title: "Extending Communities of Practice Through Digital Networks: A Relational Event Model Analysis of Knowledge Sharing Dynamics in an Online Professional Community"
+  subtitle: "working"
+  author: "Chungil Chae"
+  date: today
+  date-format: "ddd, D MMMM YYYY"
+  cover-image: img/cover.png
+  cover-image-alt: |
+    Chad 
+  chapters:
+    - 'index.qmd'
+    - part: "Research Logs"
+      chapters: 
+        - 'rl_research_log.qmd'
+        - 'rl_meeting_log.qmd'
+        - 'rl_analysis_version_log.qmd'
+        - 'rl_draft_version_log.qmd'
+    - part: "Research Note"
+      chapters: 
+        - 'rn_ideas_and_thoughts.qmd'
+        - 'rn_questions_and_answers.qmd'
+        - 'rn_procedures.qmd'
+    - part: "Theoritical Framework"
+      chapters: 
+        - 'tf_related_theories.qmd'
+        - 'tf_relationship_between_theories.qmd'
+        - 'tf_theoretical_framework.qmd'
+    - part: "Methodology and Method"
+      chapters: 
+        - 'mm_methodology.qmd'
+        - 'mm_method.qmd'
+        - 'mm_data_collection_strategy.qmd'
+        - 'mm_data.qmd'
+    - part: "Literature Review"
+      chapters: 
+        - 'lr_search_incl_excl.qmd'
+        - "lr_referencelist.qmd"
+        - 'lr_research_problem.qmd'
+        - 'lr_model_and_key_references.qmd'
+        - 'lr_quotes_and_paraphrases.qmd'
+    - 'pp_product.qmd'
+    - 'references.qmd'
+  sidebar:
+    #style: docked
+    background: light
+    collapse-level: 1
+  search: true
+  repo-url: https://drive.google.com/drive/folders/1VT6spdSadcLwtagNnNJgdPSFPZFgLQxq?usp=drive_link
+  repo-actions: [edit]
+  downloads: [pdf, epub, docx]
+  sharing: [twitter, facebook]
+  page-navigation: true
+  page-footer:
+    center: "Copyright 2025, Chungil Chae"
+    
+bibliography: bib/references.bib
+csl: bib/apa.csl
+
+format:
+  html:
+    theme: cosmos # cosmos, darkly, flatly, journal, litera, lumen, materia, minty, pulse, sandstone, simplex, sketchy, slate, spacelab, united, yeti
+    toc: true
+    toc_float: TRUE
+    toc-depth: 4
+    toc-expand: true
+    #toc-location: left
+    toc-title: TOPICS
+    toc-font-size: .5em
+    #title-block-banner: true
+    fig-cap-locatio: bottom
+    tbl-cap-location: top
+    fig-align: left
+    reference-location: section
+    footnotes-hover: true
+    #link-external-icon: true
+    lightbox: true
+    standalone: true
+    smooth-scroll: true
+    embed-resources: false
+    linestretch: 1.5
+    #code-copy: true
+    #code-fold: true
+    #code-tools: true
+  pdf:
+    toc: true
+    toc-depth: 4
+    lof: true
+    lot: true
+    number-sections: false
+    mainfont: D2Coding ligature:style=Regular
+    cover-image: img/cover.png
+    documentclass: scrreport
+    includes-in-header:
+      - \usepackage{kotex}
+      - \usepackage{marginnote}
+      - \usepackage{lineno}
+      - \linenumbers
+      - \pagestyle{fancy}
+      - \fancyhead[HL]{Report}
+      - \fancyfoot[CO,CE]{Copyright @ Chad (Chungil) Chae, since 2023}
+      - \fancyfoot[LE,RO]{\thepage}
+      - \usepackage{fancyhdr}
+      - \usepackage{lipsum}
+      - \usepackage{eso-pic,graphicx,transparent}
+      - \usepackage{pdflscape}
+      - \newcommand{\blandscape}{\begin{landscape}}
+      - \newcommand{\elandscape}{\end{landscape}}
+  docx:
+    cover-image: img/cover.png
+    toc: true
+  epub:
+    cover-image: img/cover.png
+    toc: true
