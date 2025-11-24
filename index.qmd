@@ -108,32 +108,34 @@ Updated in 2025-11-24
 :::
 
 ::: {.column width="30%"}
-![](img/tony.png)
+![](img/uh.png)
 :::
 
 ::::
 
-> David Passmore
+> 
 
-#### author
+#### David L. Passmore
 
 :::: {.columns}
 
 ::: {.column width="70%"}
 
-- email: 
+- email: dlp@davidpassmore.net
+- Distinguished Professor, Emeritus, retired from Penn State University.
+- Research Fellow, Ohio River Valley Institute, since September 2024.
 - orcid:
 - google scholar: 
 
 :::
 
 ::: {.column width="30%"}
-![](img/tony.png)
+![](img/passmore.png)
 :::
 
 ::::
 
-> 
+> Was a graduate faculty member at Penn State University for 41 years, and, in sum, an instructor/professor in higher education for 51 years before retiring from Penn State in September 2020. Was a member of the graduate faculty in Workforce Education and Development. Served as the committee chair and dissertation advisor for 82 PhD recipients in Workforce Education and Development, Adult Education, and Mineral Engineering and Management. Also was the advisor for 20 theses by students earning master’s degrees in Workforce Education and Development.
 
 
 ### Acknowledgement
